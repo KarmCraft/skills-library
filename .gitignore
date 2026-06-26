@@ -1,0 +1,19 @@
+# Generated local performance data
+**/state/*
+**/reports/*
+**/logs/*
+!**/state/.gitkeep
+!**/reports/.gitkeep
+!**/logs/.gitkeep
+
+# PowerShell and editor noise
+*.tmp
+*.log
+*.bak
+*.ps1xml
+.vscode/
+.idea/
+
+# OS noise
+Thumbs.db
+Desktop.ini

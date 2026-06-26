@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "kind": "windows_startup_baseline",
+  "collected_at_local": "2026-01-15T08:05:00+00:00",
+  "collected_at_utc": "2026-01-15T08:05:00Z",
+  "machine": {
+    "computer_name": "EXAMPLE-PC",
+    "manufacturer": "Example Vendor",
+    "model": "Example Workstation",
+    "domain_role": 0
+  },
+  "operating_system": {
+    "caption": "Microsoft Windows 11 Pro",
+    "version": "10.0.26100",
+    "build_number": "26100"
+  },
+  "boot": {
+    "last_boot_local": "2026-01-15T08:00:00+00:00",
+    "uptime_seconds": 300
+  },
+  "diagnostics_performance_events": [
+    {
+      "provider": "Microsoft-Windows-Diagnostics-Performance",
+      "id": 100,
+      "level": "Warning",
+      "time_created": "2026-01-15T08:01:00+00:00",
+      "record_id": 1001,
+      "data": {
+        "BootTime": "78000",
+        "MainPathBootTime": "32000",
+        "BootPostBootTime": "46000"
+      }
+    },
+    {
+      "provider": "Microsoft-Windows-Diagnostics-Performance",
+      "id": 101,
+      "level": "Warning",
+      "time_created": "2026-01-15T08:01:10+00:00",
+      "record_id": 1002,
+      "data": {
+        "Name": "ExampleSync.exe",
+        "TotalTime": "12000"
+      }
+    }
+  ],
+  "diagnostics_performance_collection": {
+    "log_name": "Microsoft-Windows-Diagnostics-Performance/Operational",
+    "requested_recent_event_count": 300,
+    "requested_boot_event_target": 25,
+    "requested_scan_count": 5000,
+    "effective_scan_count": 5000,
+    "scanned_event_count": 128,
+    "matched_diagnostics_event_count": 2,
+    "matched_boot_event_count": 1,
+    "returned_event_count": 2,
+    "returned_boot_event_count": 1,
+    "boot_target_satisfied": false,
+    "scan_limit_reached": false,
+    "target_window_event_count": 2,
+    "oldest_target_boot_time": "2026-01-15T08:01:00+00:00",
+    "newest_returned_time": "2026-01-15T08:01:10+00:00",
+    "oldest_returned_time": "2026-01-15T08:01:00+00:00",
+    "mode": "boot-targeted"
+  },
+  "startup": {
+    "registry_entries": [
+      {
+        "scope": "CurrentUser",
+        "kind": "Run",
+        "key_path": "HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+        "name": "Example Launcher",
+        "command": {
+          "executable": "C:\\Program Files\\Example\\ExampleLauncher.exe",
+          "executable_name": "ExampleLauncher.exe",
+          "arguments_present": false,
+          "command_hash_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    ],
+    "startup_folder_items": [],
+    "scheduled_startup_logon_tasks": [
+      {
+        "task_path": "\\Example\\",
+        "task_name": "ExampleLogonTask",
+        "state": "Ready",
+        "author": "Example Vendor",
+        "trigger_types": [
+          "MSFT_TaskLogonTrigger"
+        ],
+        "actions": [
+          {
+            "execute": "ExampleTask.exe",
+            "execute_name": "ExampleTask.exe",
+            "arguments_present": true,
+            "arguments_hash_sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+          }
+        ]
+      }
+    ],
+    "auto_start_services": [
+      {
+        "name": "ExampleService",
+        "display_name": "Example Service",
+        "state": "Running",
+        "status": "OK",
+        "delayed_auto_start": false,
+        "service_account": "LocalSystem",
+        "path": {
+          "executable": "C:\\Program Files\\Example\\ExampleService.exe",
+          "executable_name": "ExampleService.exe",
+          "arguments_present": false,
+          "command_hash_sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+        }
+      }
+    ]
+  },
+  "resources": {
+    "disks": [
+      {
+        "device_id": "C:",
+        "size_bytes": 512000000000,
+        "free_bytes": 153600000000,
+        "free_percent": 30.0
+      }
+    ],
+    "memory": {
+      "total_visible_bytes": 34359738368,
+      "free_physical_bytes": 8589934592,
+      "free_percent": 25.0
+    },
+    "page_files": [
+      {
+        "name": "C:\\pagefile.sys",
+        "allocated_base_mb": 4096,
+        "current_usage_mb": 512,
+        "peak_usage_mb": 1024
+      }
+    ],
+    "top_processes": {
+      "by_cumulative_cpu": [
+        {
+          "id": 100,
+          "name": "ExampleSync",
+          "cpu_seconds": 42.5,
+          "working_set_bytes": 400000000,
+          "private_memory_bytes": 250000000
+        }
+      ],
+      "by_working_set": [
+        {
+          "id": 200,
+          "name": "ExampleEditor",
+          "cpu_seconds": 10.1,
+          "working_set_bytes": 900000000,
+          "private_memory_bytes": 700000000
+        }
+      ]
+    },
+    "perf_processes": {
+      "by_cpu_now": [
+        {
+          "id": 100,
+          "name": "ExampleSync",
+          "percent_processor_time": 12,
+          "io_data_bytes_per_sec": 1000000,
+          "working_set_bytes": 400000000
+        }
+      ],
+      "by_io_now": [
+        {
+          "id": 100,
+          "name": "ExampleSync",
+          "percent_processor_time": 12,
+          "io_data_bytes_per_sec": 1000000,
+          "working_set_bytes": 400000000
+        }
+      ]
+    }
+  },
+  "recent_boot_events": [],
+  "collection_errors": []
+}
