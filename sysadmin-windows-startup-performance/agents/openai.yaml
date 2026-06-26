@@ -1,4 +1,4 @@
 interface:
   display_name: "Sysadmin Windows Startup Performance"
-  short_description: "Diagnose Windows startup performance."
-  default_prompt: "For a first-time assessment, guide the user through five reboot cycles. After each boot, wait 3 to 5 minutes, then run $sysadmin-windows-startup-performance to collect one read-only startup baseline. After the fifth collection, run the single-baseline analyzer on the latest collection; when comparison is needed, analyze earlier baseline files one at a time and summarize repeated patterns."
+  short_description: "Measure slow Windows boot and login."
+  default_prompt: "Use $sysadmin-windows-startup-performance to collect elevated read-only Windows boot/login baselines and analyze slow startup evidence."

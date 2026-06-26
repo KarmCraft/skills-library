@@ -10,17 +10,19 @@ Each top-level folder is a self-contained, directly installable skill.
 
 | Skill | Purpose |
 | --- | --- |
-| [`sysadmin-windows-startup-performance`](sysadmin-windows-startup-performance/) | Diagnose Windows startup performance with read-only baselines and data-driven analysis. |
+| [`sysadmin-windows-startup-performance`](https://github.com/KarmCraft/skills-library/tree/main/sysadmin-windows-startup-performance) | Diagnose Windows startup performance with read-only baselines and data-driven analysis. |
+| [`sysadmin-windows-startup-remediation`](https://github.com/KarmCraft/skills-library/tree/main/sysadmin-windows-startup-remediation) | Plan approved, reversible Windows startup changes from analysis findings. |
 
 ## Install
 
 Copy the skill folder you want into the skill directory used by your agent runtime.
 
-For Codex on Windows:
+Generic Windows example from the repository root:
 
 ```powershell
 $SkillName = "<skill-folder>"
-Copy-Item -Recurse ".\$SkillName" "$env:USERPROFILE\.codex\skills\$SkillName"
+$SkillRoot = "<path-to-your-agent-skill-directory>"
+Copy-Item -Recurse ".\$SkillName" (Join-Path $SkillRoot $SkillName)
 ```
 
 For other `SKILL.md` compatible tools, use their documented skill location.

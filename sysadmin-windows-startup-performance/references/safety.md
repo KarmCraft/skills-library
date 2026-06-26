@@ -40,6 +40,8 @@ If the user asks for changes, first provide a dry-run plan with:
 
 Require explicit approval before applying changes.
 
+If uninstall guidance is requested and normal Windows uninstall entries are missing or broken, prefer first-party vendor cleanup tools from official sources. Recommend third-party removal tools only when no first-party option exists and the tool has a strong, long-standing community or professional-use history. Avoid unproven cleanup tools, repackaged installers, SEO download portals, and mirror-only sources.
+
 ## Recommendation Threshold
 
 Prefer three or more comparable post-reboot baselines before recommending persistent startup changes. A single baseline is enough to identify what to measure next, not enough to aggressively optimize.
