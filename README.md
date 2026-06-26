@@ -17,7 +17,7 @@ Each top-level folder is a self-contained, directly installable skill.
 
 Copy the skill folder you want into the skill directory used by your agent runtime.
 
-Generic Windows example:
+Generic Windows example from the repository root:
 
 ```powershell
 $SkillName = "<skill-folder>"
