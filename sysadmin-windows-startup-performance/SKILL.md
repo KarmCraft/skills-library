@@ -1,6 +1,6 @@
 ---
 name: sysadmin-windows-startup-performance
-description: Collect and analyze read-only Windows startup performance baselines. Use when Codex is asked to diagnose slow Windows boot or login, collect Diagnostics-Performance event log data, inspect startup apps, services, scheduled tasks, resource pressure, recent boot warnings, or prepare conservative data-driven recommendations without changing system configuration.
+description: Collect and analyze read-only Windows startup performance baselines. Use when an agent or automation harness is asked to investigate slow Windows boot, sign-in, login delay, startup apps, registry Run keys, Startup folder items, scheduled tasks, services, Diagnostics-Performance event IDs 100-110, boot warnings, resource pressure, or produce evidence-based recommendations without changing system configuration.
 ---
 
 # Sysadmin Windows Startup Performance

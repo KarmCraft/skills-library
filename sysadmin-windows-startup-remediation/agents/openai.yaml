@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sysadmin Windows Startup Remediation"
+  short_description: "Plan reversible startup fixes."
+  default_prompt: "Use $sysadmin-windows-startup-remediation to plan approved, reversible startup changes from Windows startup analysis findings."
