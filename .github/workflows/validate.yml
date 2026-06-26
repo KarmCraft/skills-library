@@ -1,0 +1,47 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  powershell:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Parse PowerShell scripts
+        shell: pwsh
+        run: |
+          $failed = $false
+          Get-ChildItem -Recurse -Filter *.ps1 | ForEach-Object {
+            $tokens = $null
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref]$tokens, [ref]$errors) | Out-Null
+            if ($errors.Count -gt 0) {
+              $failed = $true
+              Write-Error "$($_.FullName) has parser errors: $($errors.Message -join '; ')"
+            }
+          }
+          if ($failed) { exit 1 }
+      - name: Check Markdown final newlines
+        shell: pwsh
+        run: |
+          $failed = $false
+          Get-ChildItem -Recurse -File -Filter *.md | ForEach-Object {
+            $bytes = [System.IO.File]::ReadAllBytes($_.FullName)
+            if ($bytes.Length -gt 0 -and $bytes[-1] -ne 10) {
+              $failed = $true
+              Write-Error "$($_.FullName) must end with a newline."
+            }
+          }
+          if ($failed) { exit 1 }
+      - name: Analyze synthetic baseline
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path .\sysadmin-windows-startup-performance\reports,.\sysadmin-windows-startup-performance\state | Out-Null
+          powershell -NoProfile -ExecutionPolicy Bypass -File .\sysadmin-windows-startup-performance\scripts\analyze-startup-baseline.ps1 -BaselinePath .\sysadmin-windows-startup-performance\examples\synthetic-baseline.json -OutputPath .\sysadmin-windows-startup-performance\reports\synthetic-analysis.md -AnalysisOutputPath .\sysadmin-windows-startup-performance\state\synthetic-analysis.json
