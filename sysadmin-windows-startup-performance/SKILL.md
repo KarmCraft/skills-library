@@ -1,6 +1,6 @@
 ---
 name: sysadmin-windows-startup-performance
-description: Collect and analyze read-only Windows startup performance baselines. Use when an agent or automation harness is asked to investigate slow Windows boot, sign-in, login delay, startup apps, registry Run keys, Startup folder items, scheduled tasks, services, Diagnostics-Performance event IDs 100-110, boot warnings, resource pressure, or produce evidence-based recommendations without changing system configuration.
+description: Collect and analyze read-only Windows startup performance baselines, producing sanitized JSON baselines and Markdown analysis reports. Use when an agent or automation harness is asked to investigate slow Windows boot, sign-in, login delay, startup apps, registry Run keys, Startup folder items, scheduled tasks, services, Diagnostics-Performance event IDs 100-110, boot warnings, resource pressure, or evidence-based recommendations without changing system configuration.
 ---
 
 # Sysadmin Windows Startup Performance
@@ -13,6 +13,7 @@ Use this skill for read-only Windows startup diagnostics. It collects sanitized 
 
 - `scripts/collect-startup-baseline.ps1`: elevated read-only collector for Diagnostics-Performance events, startup inventory, service/task signals, resources, and recent boot warnings.
 - `scripts/analyze-startup-baseline.ps1`: analyzer that ranks findings and writes a Markdown report.
+- `references/analysis-framework.md`: reasoning principles, confidence levels, recommendation quality, and edge cases for interpreting baselines.
 - `references/data-model.md`: baseline and analysis schema notes.
 - `references/safety.md`: operating rules and remediation boundaries.
 - `examples/synthetic-baseline.json`: synthetic fixture for analyzer validation.
@@ -22,11 +23,12 @@ Use this skill for read-only Windows startup diagnostics. It collects sanitized 
 ## Workflow
 
 1. Read `references/safety.md` before collecting data or recommending changes.
-2. Create or use a local hub folder with `scripts/`, `state/`, `reports/`, and `logs/`. A template is available at `templates/local-performance/` when this repository is installed as a project.
-3. Run the collector from an elevated PowerShell session. Do not fall back to non-admin collection because protected boot timing logs can be missed.
-4. Run the analyzer on the latest or specified baseline.
-5. Prefer at least three comparable post-reboot baselines before recommending startup changes.
-6. If the user asks for remediation, produce a dry-run plan with rollback notes first. Do not mutate startup apps, registry entries, scheduled tasks, services, drivers, security tools, or Windows settings without explicit approval.
+2. Read `references/analysis-framework.md` before interpreting findings or writing recommendations.
+3. Create or use a local hub folder with `scripts/`, `state/`, `reports/`, and `logs/`. A template is available at `templates/local-performance/` when this repository is installed as a project.
+4. Run the collector from an elevated PowerShell session. Do not fall back to non-admin collection because protected boot timing logs can be missed.
+5. Run the analyzer on the latest or specified baseline.
+6. Prefer at least three comparable post-reboot baselines before recommending startup changes.
+7. If the user asks for remediation, produce a dry-run plan with rollback notes first. Do not mutate startup apps, registry entries, scheduled tasks, services, drivers, security tools, or Windows settings without explicit approval.
 
 ## Commands
 

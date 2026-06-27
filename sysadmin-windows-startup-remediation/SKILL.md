@@ -1,6 +1,6 @@
 ---
 name: sysadmin-windows-startup-remediation
-description: Plan and apply approved, reversible Windows startup remediation from prior analysis. Use when an agent or automation harness is asked to act on startup findings, disable or reconfigure autostart entries, registry Run keys, Startup folder items, Task Scheduler logon or startup tasks, auto-start services, vendor launchers or updaters, prepare rollback, vet uninstall tools, write change records, or verify post-change startup behavior with explicit approval.
+description: Plan and apply approved, reversible Windows startup remediation, producing dry-run remediation plans and change records from prior analysis. Use when an agent or automation harness is asked to act on startup findings, disable or reconfigure autostart entries, registry Run keys, Startup folder items, Task Scheduler logon or startup tasks, auto-start services, vendor launchers or updaters, prepare rollback, vet uninstall tools, or verify post-change startup behavior with explicit approval.
 ---
 
 # Sysadmin Windows Startup Remediation
@@ -12,7 +12,9 @@ Use this skill after Windows startup performance analysis identifies candidates 
 ## Files
 
 - `references/safety.md`: approval, rollback, and stop rules.
+- `references/decision-framework.md`: target classification, action preference, approval quality, and stop conditions.
 - `references/target-types.md`: supported Windows startup target types and preferred actions.
+- `examples/remediation-cases.md`: synthetic examples for safe candidates, stop-and-ask cases, unknown targets, uninstall guidance, and disabled residue.
 - `templates/remediation-plan.md`: dry-run plan template to prepare before changes.
 - `templates/change-record.md`: execution and verification record template.
 - `reports/`: generated remediation plans and human-readable records.
@@ -23,13 +25,15 @@ Use this skill after Windows startup performance analysis identifies candidates 
 
 1. Start from evidence: use a startup analysis JSON or report, preferably from the [`sysadmin-windows-startup-performance`](https://github.com/KarmCraft/skills-library/tree/main/sysadmin-windows-startup-performance) skill. If no analysis exists, ask to collect/read one first.
 2. Read `references/safety.md` before proposing or applying changes.
-3. Read `references/target-types.md` for target-specific action and rollback patterns.
-4. Produce a dry-run plan using `templates/remediation-plan.md`; include exact target identity, evidence, proposed action, risk, expected effect, elevation needs, and rollback.
-5. Ask for explicit approval for each target or clearly named group of identical low-risk targets. Do not treat general optimization intent as approval.
-6. Before applying a change, capture current state needed for rollback and write/update a local record under `state/` or `reports/`.
-7. Apply the least invasive reversible action. Prefer supported product settings or Windows-supported enable/disable operations over deleting registry values or files.
-8. Verify immediately where possible, then recommend a reboot and a fresh performance baseline to measure effect.
-9. Write a change record using `templates/change-record.md` with what changed, commands or manual steps used, verification result, and rollback path.
+3. Read `references/decision-framework.md` before classifying targets or asking for approval.
+4. Read `references/target-types.md` for target-specific action and rollback patterns.
+5. Use `examples/remediation-cases.md` when a target resembles a common safe, risky, unknown, uninstall, or residue case.
+6. Produce a dry-run plan using `templates/remediation-plan.md`; include exact target identity, evidence, proposed action, risk, expected effect, elevation needs, and rollback.
+7. Ask for explicit approval for each target or clearly named group of identical low-risk targets. Do not treat general optimization intent as approval.
+8. Before applying a change, capture current state needed for rollback and write/update a local record under `state/` or `reports/`.
+9. Apply the least invasive reversible action. Prefer supported product settings or Windows-supported enable/disable operations over deleting registry values or files.
+10. Verify immediately where possible, then recommend a reboot and a fresh performance baseline to measure effect.
+11. Write a change record using `templates/change-record.md` with what changed, commands or manual steps used, verification result, and rollback path.
 
 ## Operating Rules
 
